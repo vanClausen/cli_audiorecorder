@@ -24,13 +24,14 @@ import requests
 import time
 
 class AudioRecorder:
-    def __init__(self, url, filename, duration, blocksize, verbose):
+    def __init__(self, url, filename, duration, blocksize, verbose, status_callback=None):
         self.url = url
         self.filename = filename if filename.endswith('.mp3') else f"{filename}.mp3"
         self.duration = duration
         self.blocksize = blocksize
         self.verbose = verbose
 
+        self.status_callback = status_callback
         self._bitrate = None
 
     def record(self):
@@ -119,6 +120,9 @@ class AudioRecorder:
         :param o_case: Event
         :type o_case: str
         """
+        if self.status_callback:
+            self.status_callback(o_case)
+
         if not self.verbose:
             return
 
