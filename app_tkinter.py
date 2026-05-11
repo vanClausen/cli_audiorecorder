@@ -55,7 +55,7 @@ def run_record_task(url, filename, duration, blocksize):
 
     root.after(0, enable_button, 'normal')
 
-def list_recorded_streams():
+def open_recorded_streams():
     current_path = os.getcwd()
 
     if sys.platform == "win32":
@@ -106,7 +106,7 @@ btn_record.pack(pady=10)
 lbl_status = tk.Label(root, text="Ready")
 lbl_status.pack()
 
-btn_listfiles = tk.Button(root, text="Open saved stream directory", command=list_recorded_streams)
+btn_listfiles = tk.Button(root, text="Open recorded streams directory", command=open_recorded_streams)
 btn_listfiles.pack(pady=10)
 
 root.mainloop()
